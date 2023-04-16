@@ -1,0 +1,21 @@
+{
+  "name": "pdf-worker",
+  "version": "1.0.0",
+  "description": "create PDF with default values for my college homework",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "PDF",
+    "lib",
+    "creator",
+    "builder"
+  ],
+  "author": "JVCSS",
+  "license": "MIT",
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}
