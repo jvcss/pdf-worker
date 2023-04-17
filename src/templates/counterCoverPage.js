@@ -6,27 +6,26 @@ const {
 } = require('pdf-lib');
 
 async function createCounterCoverPage(pdfDoc, data) {
-    const { collegeLogoPath, collegeName, degreeName, studentName,
-        paperTitle, paperSubtitle, location, year } = data;
+    const {  studentName, paperTitle, paperSubtitle,
+        paperDescription, location, year } = data;
 
     const { fontSize, } = abntConfig.abntRules;
 
     const [pageWidth,] = PageSizes.A4;
 
-    // Embed the college logo image
-
     // Embed the default font
     const newFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
     const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-    // Create the cover page
-    const coverPage = pdfDoc.addPage(PageSizes.A4);
+    // Create the PAGE
+    const counterCoverPage = pdfDoc.addPage(PageSizes.A4);
 
     const linesOfText = [
 
         { text: studentName, font: newFont, size: fontSize, bold: false, linesAfter: 12 },
         { text: paperTitle, font: fontBold, size: fontSize, bold: true, linesAfter: 1 },
-        { text: paperSubtitle, font: newFont, size: fontSize, bold: false, linesAfter: 16.5 },
+        { text: paperSubtitle, font: newFont, size: fontSize, bold: false, linesAfter: 5 },
+        { text: paperDescription, font: newFont, size: fontSize, bold: false, linesAfter: 1 },
         { text: location, font: newFont, size: fontSize, bold: false, linesAfter: 1 },
         { text: year, font: newFont, size: fontSize, bold: false, linesAfter: 1 },
     ];
@@ -40,7 +39,7 @@ async function createCounterCoverPage(pdfDoc, data) {
 
         const txt = String(line.text);
         // Draw the line of text
-        coverPage.drawText(txt, {
+        counterCoverPage.drawText(txt, {
 
             x: pageWidth / 2 - line.font.widthOfTextAtSize(`${txt}`, line.size) / 2,
             y: yOffset,
@@ -53,7 +52,7 @@ async function createCounterCoverPage(pdfDoc, data) {
     }
 
     // Return the created cover page
-    return coverPage;
+    return counterCoverPage;
 }
 
 

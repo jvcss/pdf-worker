@@ -16,7 +16,12 @@ const coverData = {
 };
 
 const conterCoverData = {
-    
+    studentName: 'JOÃO VICTOR CARDOSO DOS SANTOS',
+    paperTitle: 'Linguagens Formais e Autômatos:',
+    paperSubtitle: 'Exercícios',
+    paperDescription: 'Trabalho Acadêmico apresentado como requisito parcial para obtenção do título de Bacharel em Engenharia de Software, pelo Programa de Graduação da Faculdade IESB.',
+    location: 'Goiânia, GO',
+    year: new Date().getFullYear(),
 }
 
 const chapters = [
@@ -30,7 +35,7 @@ const chapters = [
     },
 ];
 
-createPDF(title, chapters, coverData)
+createPDF(title, chapters, coverData, conterCoverData)
     .then(() => {
         console.log('PDF created successfully');
         console.log(`Check the ${config.outputDirectory}/${config.outputFile} file.`);
