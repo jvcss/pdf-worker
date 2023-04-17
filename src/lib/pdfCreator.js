@@ -2,10 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const config = require('../config');
 const { createCoverPage } = require('../templates/coverPage');
-
 const { createCounterCoverPage } = require('../templates/counterCoverPage')
-
-const { PDFDocument, StandardFonts } = require('pdf-lib');
+const { PDFDocument } = require('pdf-lib');
 
 async function createPDF(title, chapters, coverData, conterCoverData) {
     // Create a new PDF document
@@ -17,11 +15,21 @@ async function createPDF(title, chapters, coverData, conterCoverData) {
     // Add the counter cover page
     await createCounterCoverPage(pdfDoc, conterCoverData)
 
-    
 
+    // Serialize the PDF to bytes
+    const pdfBytes = await pdfDoc.save();
 
+    // Write the PDF to a file
+    const outputFilepath = path.join(config.outputDirectory, config.outputFile);
+    fs.writeFileSync(outputFilepath, pdfBytes);
+    //fs.writeFileSync('output.pdf', pdfBytes);
+}
 
+module.exports = {
+    createPDF,
+};
 
+/*
     // Add a default font for the document
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
     // Define common styles
@@ -60,19 +68,4 @@ async function createPDF(title, chapters, coverData, conterCoverData) {
             lineHeight: 20,
         });
     }
-
-
-
-
-    // Serialize the PDF to bytes
-    const pdfBytes = await pdfDoc.save();
-
-    // Write the PDF to a file
-    const outputFilepath = path.join(config.outputDirectory, config.outputFile);
-    fs.writeFileSync(outputFilepath, pdfBytes);
-    //fs.writeFileSync('output.pdf', pdfBytes);
-}
-
-module.exports = {
-    createPDF,
-};
+*/

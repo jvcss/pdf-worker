@@ -63,7 +63,7 @@ async function createCoverPage(pdfDoc, data) {
         });
 
         yOffset -= lineSpacing * line.linesAfter;
-        console.table([line, yOffset])
+        //console.table([line, yOffset])
     }
 
     // Return the created cover page

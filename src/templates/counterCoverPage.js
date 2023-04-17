@@ -6,12 +6,12 @@ const {
 } = require('pdf-lib');
 
 async function createCounterCoverPage(pdfDoc, data) {
-    const {  studentName, paperTitle, paperSubtitle,
+    const { studentName, paperTitle, paperSubtitle,
         paperDescription, location, year } = data;
 
-    const { fontSize, } = abntConfig.abntRules;
+    const { fontSize, oneCentimeter, threeCentimeter, twoCentimeter } = abntConfig.abntRules;
 
-    const [pageWidth,] = PageSizes.A4;
+    const [pageWidth, pageHeight] = PageSizes.A4;//A4: [595.28, 841.89] as [number, number],
 
     // Embed the default font
     const newFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
@@ -21,7 +21,6 @@ async function createCounterCoverPage(pdfDoc, data) {
     const counterCoverPage = pdfDoc.addPage(PageSizes.A4);
 
     const linesOfText = [
-
         { text: studentName, font: newFont, size: fontSize, bold: false, linesAfter: 12 },
         { text: paperTitle, font: fontBold, size: fontSize, bold: true, linesAfter: 1 },
         { text: paperSubtitle, font: newFont, size: fontSize, bold: false, linesAfter: 5 },
@@ -31,7 +30,8 @@ async function createCounterCoverPage(pdfDoc, data) {
     ];
 
     // Define Y offsets for each text element
-    let yOffset = 725;
+    let yOffset = pageHeight - threeCentimeter;
+
     const lineSpacing = fontSize * 1.5
 
     for (let i = 0; i < linesOfText.length; i++) {
@@ -48,7 +48,7 @@ async function createCounterCoverPage(pdfDoc, data) {
         });
 
         yOffset -= lineSpacing * line.linesAfter;
-        console.table([line, yOffset])
+        //console.table([line, yOffset])
     }
 
     // Return the created cover page

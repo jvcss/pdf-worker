@@ -14,6 +14,9 @@ module.exports = {
     },
     abntRules:{
         fontSize: 12,
+        oneCentimeter: 28.35,
+        threeCentimeter: 85.05,
+        twoCentimeter: 56.7,
     },
 
 };
