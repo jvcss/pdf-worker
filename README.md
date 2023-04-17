@@ -11,7 +11,7 @@ College Paper Creator is a Node.js backend application that helps college studen
 ## Technologies Used
 - Node.js
 - PDF-Lib
-- ABNTConfig
+- Express
 
 ## Installation
 1. Clone the repository
@@ -24,7 +24,7 @@ College Paper Creator is a Node.js backend application that helps college studen
 
 ## Acknowledgments
 - This project was inspired by the need to simplify the process of creating college papers.
-- Thanks to PDF-Lib and ABNTConfig for their excellent libraries.
+- Thanks to PDF-Lib their excellent libraries.
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).

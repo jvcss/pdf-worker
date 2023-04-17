@@ -5,20 +5,15 @@ const {
     PageSizes
 } = require('pdf-lib');
 
-async function createCoverPage(pdfDoc, data) {
+async function createCounterCoverPage(pdfDoc, data) {
     const { collegeLogoPath, collegeName, degreeName, studentName,
         paperTitle, paperSubtitle, location, year } = data;
 
-    const { fontSize, marginTop, marginBottom, marginLeft,
-        marginRight, collegeNameGap, degreeNameGap, studentNameGap,
-        tccTitleGap, subtitleGap, cityYearGap, } = abntConfig.coverPage;
+    const { fontSize, } = abntConfig.abntRules;
 
-    const [pageWidth, pageHeight] = PageSizes.A4;
+    const [pageWidth,] = PageSizes.A4;
 
     // Embed the college logo image
-    const logoImage = await pdfDoc.embedPng(fs.readFileSync(collegeLogoPath));
-
-    const logoDims = logoImage.size();
 
     // Embed the default font
     const newFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
@@ -27,18 +22,9 @@ async function createCoverPage(pdfDoc, data) {
     // Create the cover page
     const coverPage = pdfDoc.addPage(PageSizes.A4);
 
-    // Draw the college logo the page have height of 841.89 and we are writing 700 for y axis
-    coverPage.drawImage(logoImage, {
-        x: pageWidth / 2 - logoDims.width / 2,
-        y: 750,
-        width: logoDims.width,
-        height: logoDims.height,
-    });
-
     const linesOfText = [
-        { text: collegeName, font: newFont, size: fontSize, bold: false, linesAfter: 1 },
-        { text: degreeName, font: newFont, size: fontSize, bold: false, linesAfter: 3 },
-        { text: studentName, font: newFont, size: fontSize, bold: false, linesAfter: 16 },
+
+        { text: studentName, font: newFont, size: fontSize, bold: false, linesAfter: 12 },
         { text: paperTitle, font: fontBold, size: fontSize, bold: true, linesAfter: 1 },
         { text: paperSubtitle, font: newFont, size: fontSize, bold: false, linesAfter: 16.5 },
         { text: location, font: newFont, size: fontSize, bold: false, linesAfter: 1 },
@@ -72,5 +58,5 @@ async function createCoverPage(pdfDoc, data) {
 
 
 module.exports = {
-    createCoverPage,
+    createCounterCoverPage,
 };

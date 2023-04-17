@@ -15,6 +15,10 @@ const coverData = {
     year: new Date().getFullYear(),
 };
 
+const conterCoverData = {
+    
+}
+
 const chapters = [
     {
         title: 'Chapter 1: Introduction',
