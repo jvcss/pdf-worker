@@ -1,0 +1,64 @@
+{
+    "coverPage": {
+        "config": {
+            "fontSize": 12,
+            "margin": "3cm 2cm 2cm 3cm",
+            "align" : "center",
+            "linesAfter": "1",
+            "bold": false
+        },
+        "collegeLogo": {
+            "config": {
+                "default": true
+            },
+            "value": ["data:image/png;base64,iVBORw0K="]
+        },
+        "collegeName": {
+            "config": {
+                "default": true
+            },
+            "value": ["CENTRO UNIVERSITÁRIO", "INSTITUTO DE EDUCAÇÃO SUPERIOR DE BRASÍLIA"]
+        },
+        "degreeName": {
+            "config": {
+                "default": true,
+                "linesAfter": "3"
+            },
+            "value": ["BACHARELADO EM ENGENHARIA DE SOFTWARE"]
+        },
+        "studentName": {
+            "config": {
+                "default": true
+            },
+            "value": ["JOÃO VICTOR CARDOSO DOS SANTOS"]
+        },
+        "paperTitle": {
+            "config": {
+                "default": true,
+                "bold": true
+            },
+            "value": ["Linguagens Formais e Autômatos"]
+        },
+        "paperSubtitle": {
+            "config": {
+                "default": true
+            },
+            "value": ["Exercícios"]
+        },
+        "location": {
+            "config": {
+                "default": true
+            },
+            "value": ["Goiânia, GO"]
+        },
+        "year": {
+            "config": {
+                "default": true
+            },
+            "value": ["Date()"]
+        }
+    },
+    "titlePage": {
+        
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "pages": [
+      {
+        "config": {
+          "fontSize": 12,
+          "marginTop": "3cm",
+          "marginBottom": "2cm",
+          "marginLeft": "2cm",
+          "marginRight": "2cm"
+        },
+        "sections": [
+          {
+            "content": [
+              {
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "config": {
+                  "bold": true,
+                  "align": "center"
+                }
+              },
+              {
+                "text": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "config": {
+                  "italic": true,
+                  "align": "justify"
+                }
+              }
+            ],
+            "config": {
+              "marginTop": "1cm",
+              "marginBottom": "1cm"
+            }
+          },
+          {
+            "content": [
+              {
+                "text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                "config": {
+                  "align": "justify"
+                }
+              }
+            ],
+            "config": {
+              "marginTop": "1cm",
+              "marginBottom": "3cm"
+            }
+          }
+        ]
+      },
+      {
+        "config": {
+          "fontSize": 14,
+          "marginTop": "2cm",
+          "marginBottom": "2cm",
+          "marginLeft": "2cm",
+          "marginRight": "2cm"
+        },
+        "sections": [
+          {
+            "content": [
+              {
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "config": {
+                  "bold": true,
+                  "align": "center"
+                }
+              }
+            ],
+            "config": {
+              "marginTop": "2cm",
+              "marginBottom": "2cm"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

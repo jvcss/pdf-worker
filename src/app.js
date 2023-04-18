@@ -1,15 +1,12 @@
 const { createPDF } = require('./lib/pdfCreator');
 const config = require('./config');
 
-
-const title = 'My Book Title';
-
 const coverData = {
-    collegeLogoPath: 'assets/images/college_logo.png', // Replace with the actual file path
+    collegeLogoPath: 'assets/images/college_logo.png',
     collegeName: 'CENTRO UNIVERSITÁRIO INSTITUTO DE EDUCAÇÃO SUPERIOR DE BRASÍLIA',
     degreeName: 'BACHARELADO EM ENGENHARIA DE SOFTWARE',
     studentName: 'JOÃO VICTOR CARDOSO DOS SANTOS',
-    paperTitle: 'Linguagens Formais e Autômatos:',
+    paperTitle: 'Linguagens Formais e Autômatos',
     paperSubtitle: 'Exercícios',
     location: 'Goiânia, GO',
     year: new Date().getFullYear(),
@@ -17,13 +14,15 @@ const coverData = {
 
 const conterCoverData = {
     studentName: 'JOÃO VICTOR CARDOSO DOS SANTOS',
-    paperTitle: 'Linguagens Formais e Autômatos:',
+    paperTitle: 'Linguagens Formais e Autômatos',
     paperSubtitle: 'Exercícios',
     paperDescription: 'Trabalho Acadêmico apresentado como requisito parcial para obtenção do título de Bacharel em Engenharia de Software, pelo Programa de Graduação da Faculdade IESB.',
+    teacher: 'Orientador: Prof. Silva, William de Almeida',
     location: 'Goiânia, GO',
     year: new Date().getFullYear(),
 }
 
+const title = 'My Book Title';
 const chapters = [
     {
         title: 'Chapter 1: Introduction',

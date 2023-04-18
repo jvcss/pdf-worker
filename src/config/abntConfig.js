@@ -12,11 +12,19 @@ module.exports = {
         subtitleGap: 20 * 12, // 20 empty spaces
         cityYearGap: 0, // Gap between City and Year
     },
-    abntRules:{
+    abntRules: {
         fontSize: 12,
         oneCentimeter: 28.35,
-        threeCentimeter: 85.05,
         twoCentimeter: 56.7,
+        threeCentimeter: 85.05,
     },
-
+    titlePage: {
+        fontSize: 12,
+        marginTop: 85.05,
+        marginLeft: 85.05,
+        marginBottom: 56.7,
+        marginRight: 56.7,
+        indent: 28.35 * 8, // 3 + 8
+        
+    }
 };

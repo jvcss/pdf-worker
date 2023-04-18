@@ -5,9 +5,11 @@ const {
     PageSizes
 } = require('pdf-lib');
 
+const { splitTextIntoLines } = require('../lib/utils')
+
 async function createCounterCoverPage(pdfDoc, data) {
     const { studentName, paperTitle, paperSubtitle,
-        paperDescription, location, year } = data;
+        paperDescription, teacher, location, year } = data;
 
     const { fontSize, oneCentimeter, threeCentimeter, twoCentimeter } = abntConfig.abntRules;
 
@@ -21,33 +23,61 @@ async function createCounterCoverPage(pdfDoc, data) {
     const counterCoverPage = pdfDoc.addPage(PageSizes.A4);
 
     const linesOfText = [
-        { text: studentName, font: newFont, size: fontSize, bold: false, linesAfter: 12 },
-        { text: paperTitle, font: fontBold, size: fontSize, bold: true, linesAfter: 1 },
-        { text: paperSubtitle, font: newFont, size: fontSize, bold: false, linesAfter: 5 },
-        { text: paperDescription, font: newFont, size: fontSize, bold: false, linesAfter: 1 },
-        { text: location, font: newFont, size: fontSize, bold: false, linesAfter: 1 },
-        { text: year, font: newFont, size: fontSize, bold: false, linesAfter: 1 },
+        { text: studentName, font: newFont, size: fontSize, bold: false, linesAfter: 12, extraMargin: false },
+        { text: paperTitle, font: fontBold, size: fontSize, bold: true, linesAfter: 1, extraMargin: false },
+        { text: paperSubtitle, font: newFont, size: fontSize, bold: false, linesAfter: 5, extraMargin: false },
+        {
+            text: paperDescription,
+            font: newFont, size: fontSize,
+            bold: false, linesAfter: 1,
+            extraMargin: true,
+        },
+        { text: teacher, font: newFont, size: fontSize, bold: true, linesAfter: 1, extraMargin: false },
+        { text: location, font: newFont, size: fontSize, bold: false, linesAfter: 1, extraMargin: false },
+        { text: year, font: newFont, size: fontSize, bold: false, linesAfter: 1, extraMargin: false },
     ];
 
     // Define Y offsets for each text element
     let yOffset = pageHeight - threeCentimeter;
-
+    // Create the line space with 1.5 times
     const lineSpacing = fontSize * 1.5
+
+    // Define the left margin as 8cm + 3cm [marginleft]
+    const leftMargin = 12 * abntConfig.abntRules.oneCentimeter;
+    const x_extra = leftMargin;
+    // Define the width of the text area as 9cm (pageWidth - leftMargin - rightMargin)
+    const textWidth = pageWidth - leftMargin - 2 * abntConfig.abntRules.twoCentimeter;
+    const lines = splitTextIntoLines(paperDescription, newFont, fontSize, textWidth);
+    console.table(lines)
+
 
     for (let i = 0; i < linesOfText.length; i++) {
         const line = linesOfText[i];
 
         const txt = String(line.text);
-        // Draw the line of text
-        counterCoverPage.drawText(txt, {
+        // Draw the line of text or the ajusted lines with extra margin 
+        if (line.extraMargin) {
+            for (let j = 0; j < lines.length; j++) {
+                const newLine = lines[j];//we are breaking into multiple lines one sentence
+                counterCoverPage.drawText(newLine, {
+                    x: x_extra,
+                    y: yOffset,
+                    size: fontSize,
+                    font: newFont,
+                });
+                yOffset -= lineSpacing;//new lines
+            }
 
-            x: pageWidth / 2 - line.font.widthOfTextAtSize(`${txt}`, line.size) / 2,
-            y: yOffset,
-            size: line.size,
-            font: line.bold ? fontBold : line.font,
-        });
+        } else {
+            counterCoverPage.drawText(txt, {
+                x: pageWidth / 2 - line.font.widthOfTextAtSize(`${txt}`, line.size) / 2,
+                y: yOffset,
+                size: line.size,
+                font: line.bold ? fontBold : line.font,
+            });
 
-        yOffset -= lineSpacing * line.linesAfter;
+            yOffset -= lineSpacing * line.linesAfter;
+        }
         //console.table([line, yOffset])
     }
 
