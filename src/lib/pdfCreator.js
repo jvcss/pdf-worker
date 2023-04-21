@@ -16,7 +16,7 @@ async function createPDF(title, chapters, coverData, conterCoverData) {
     await createCounterCoverPage(pdfDoc, conterCoverData)
 
 
-    // Serialize the PDF to bytes
+    
     const pdfBytes = await pdfDoc.save();
 
     // Write the PDF to a file

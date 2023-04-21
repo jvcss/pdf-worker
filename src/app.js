@@ -1,6 +1,18 @@
 const { createPDF } = require('./lib/pdfCreator');
 const config = require('./config');
+const { newPDF } = require('./lib/pdfCreator2')
+const doc = require('../src/config/doc.json');
 
+newPDF(doc)
+    .then(() => {
+        console.log('PDF created successfully');
+        console.log(`Check the ${config.outputDirectory}/${config.outputFile} file.`);
+    })
+    .catch((error) => {
+        console.error('Error creating PDF:', error);
+    });
+
+/*
 const coverData = {
     collegeLogoPath: 'assets/images/college_logo.png',
     collegeName: 'CENTRO UNIVERSITÁRIO INSTITUTO DE EDUCAÇÃO SUPERIOR DE BRASÍLIA',
@@ -34,6 +46,10 @@ const chapters = [
     },
 ];
 
+
+
+
+
 createPDF(title, chapters, coverData, conterCoverData)
     .then(() => {
         console.log('PDF created successfully');
@@ -42,3 +58,4 @@ createPDF(title, chapters, coverData, conterCoverData)
     .catch((error) => {
         console.error('Error creating PDF:', error);
     });
+*/
