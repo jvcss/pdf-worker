@@ -3,9 +3,9 @@
       {
         "config": {
           "fontSize": 12,
-          "marginTop": "2cm",
+          "marginTop": "3cm",
           "marginBottom": "2cm",
-          "marginLeft": "2cm",
+          "marginLeft": "3cm",
           "marginRight": "2cm"
         },
         "sections": [
@@ -50,9 +50,9 @@
       {
         "config": {
           "fontSize": 14,
-          "marginTop": "2cm",
+          "marginTop": "3cm",
           "marginBottom": "2cm",
-          "marginLeft": "2cm",
+          "marginLeft": "3cm",
           "marginRight": "2cm"
         },
         "sections": [

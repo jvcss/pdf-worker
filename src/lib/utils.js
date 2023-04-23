@@ -82,7 +82,6 @@ async function drawMargins(pdfPage, xMin, xMax, yMin, yMax) {
 }
 
 function getPageLimits(pageConfig, fontSize) {
-    //const pageSize = PageSizes.A4;
     const [width, height] = PageSizes.A4;
 
     const { marginTop, marginBottom, marginLeft, marginRight } = pageConfig;
@@ -97,6 +96,7 @@ function getPageLimits(pageConfig, fontSize) {
     const yMin = height - marginTopPts - (fontSize / 2);
     const yMax = marginBottomPts + (fontSize / 2);
 
+    console.table([{ xMin, xMax, yMin, yMax }])
     return { xMin, xMax, yMin, yMax };
 }
 
