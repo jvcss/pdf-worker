@@ -8,6 +8,7 @@ const { PDFDocument } = require('pdf-lib');
 async function createPDF(title, chapters, coverData, conterCoverData) {
     // Create a new PDF document
     const pdfDoc = await PDFDocument.create();
+    
 
     // Add the cover page
     await createCoverPage(pdfDoc, coverData);
