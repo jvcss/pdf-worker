@@ -141,7 +141,7 @@ async function buildPage(pdfDoc, page) {
 
     console.table(width)
 
-    await drawGrid(pdfPage, PageSizes.A4);
+    await drawGrid(pdfPage, PageSizes.A4);/// SEE GRID
 
 
     pdfPage.drawText(text, { x: xMin, y: yMin, size: fontSize });
