@@ -129,8 +129,9 @@ async function buildPage(pdfDoc, page) {
     pdfPage.setFont(helveticaFont)
 
 
-
-    const text = "Lorem ipsum dolor sit amet!";
+    // TODO fix this, we will split this text following the margin rules of this page
+    // so we should check this at what point?
+    const text = "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet!";
 
     const { xMin, xMax,
         yMin, yMax } = getPageLimits(page.config, fontSize)
